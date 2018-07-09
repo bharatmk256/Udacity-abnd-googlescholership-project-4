@@ -19,6 +19,10 @@ import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
 
+    private SongListAdapter songAdapter;
+    private ListView listView;
+    private ArrayList<SongList> songLists;
+
 
     @Nullable
     @Override
@@ -27,37 +31,42 @@ public class HomeFragment extends Fragment {
 
     }
 
-}
+     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initViews();
+        loadData();
+    }
+    
+     private void initViews(){
+        listView = getActivity().findViewById(R.id.listOfSong);
+    }
 
-//    public class HomeFragment extends AppCompatActivity {
-//
-//        @Override
-//        protected void onCreate(Bundle savedInstanceState) {
-//            super.onCreate(savedInstanceState);
-//            setContentView(R.layout.fragment_home);
-//
-//            ArrayList<SongList> songLists = new ArrayList<SongList>();
-//            songLists.add(new SongList("one",R.drawable.playlist0));
-//            songLists.add(new SongList("two",R.drawable.playlist0));
-//            songLists.add(new SongList("three",R.drawable.playlist0));
-//            songLists.add(new SongList("four",R.drawable.playlist0));
-//            songLists.add(new SongList("five",R.drawable.playlist0));
-//            songLists.add(new SongList("six",R.drawable.playlist0));
-//            songLists.add(new SongList("seven",R.drawable.playlist0));
-//            songLists.add(new SongList("eight",R.drawable.playlist0));
-//            songLists.add(new SongList("nine",R.drawable.playlist0));
-//            songLists.add(new SongList("ten",R.drawable.playlist0));
-//
-//
-//
-//            SongListAdapter songAdapter = new SongListAdapter(this, songLists);
-//
-//            ListView listView = (ListView) findViewById(R.id.listOfSong);
-//
-//            listView.setAdapter(songAdapter);
-//
-//        }
-//    }
+    private void loadData(){
 
+            songLists = new ArrayList<>();
+            songLists.add(new SongList("one",R.drawable.playlist0));
+            songLists.add(new SongList("two",R.drawable.playlist0));
+            songLists.add(new SongList("three",R.drawable.playlist0));
+            songLists.add(new SongList("four",R.drawable.playlist0));
+            songLists.add(new SongList("five",R.drawable.playlist0));
+            songLists.add(new SongList("six",R.drawable.playlist0));
+            songLists.add(new SongList("seven",R.drawable.playlist0));
+            songLists.add(new SongList("eight",R.drawable.playlist0));
+            songLists.add(new SongList("nine",R.drawable.playlist0));
+            songLists.add(new SongList("ten",R.drawable.playlist0));
 
+            songAdapter = new SongListAdapter(this, songLists);
 
+            
+           listView.setAdapter(songAdapter);
+
+      
+        
+        mAdapter = new TvSeriesAdapter(mArrayList);
+        mRecyclerView.setAdapter(mAdapter);
+
+    }
+
+    
+}   
